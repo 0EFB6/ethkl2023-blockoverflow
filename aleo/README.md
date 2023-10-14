@@ -15,6 +15,7 @@ Deposit Insurance for Web 3 is a groundbreaking project that ensures the safety 
 - [Crytocurrency Code Table](#cryptocurrency-code-table)
 - [Functions & Parameters Description](#functions--parameters-description)
 - [Demo](#demo)
+- [Author](#author)
 
 ## Introduction
 
@@ -258,3 +259,7 @@ leo run get_pool_details aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxc
 You will be able to view the total fund insured with Deposit Insurance For Web 3 and it is the fund we will store and manage it.
 
 **Last but not least,** you may checkout `sample.sh` for the demo script which works on Unix-like OS.
+
+## Author
+
+This project was developed by the `BlockOverflow` team.

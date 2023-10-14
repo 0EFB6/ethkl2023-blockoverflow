@@ -1,5 +1,5 @@
 import { useState } from "react";
-import helloworld_program from "../depositinsurance/build/main.aleo?raw";
+import program from "../depositinsurance/build/main.aleo?raw";
 import { AleoWorker } from "./workers/AleoWorker.js";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -22,7 +22,7 @@ function App() {
   async function execute() {
     setExecuting(true);
     const result = await aleoWorker.localProgramExecution(
-      helloworld_program,
+      program,
       "main",
       ["5u32", "5u32"],
     );
@@ -34,7 +34,7 @@ function App() {
   async function deploy() {
     setDeploying(true);
     try {
-      const result = await aleoWorker.deployProgram(helloworld_program);
+      const result = await aleoWorker.deployProgram(program);
       console.log("Transaction:")
       console.log("https://explorer.hamp.app/transaction?id=" + result)
       alert("Transaction ID: " + result);
@@ -53,36 +53,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/funds" element={<Funds />} />
         </Routes>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-
-          {/* Execute Aleo Script */}
-          <p>
-            <h1 className="font-bold text-2xl">Execute Aleo Script</h1>
-            <button disabled={executing} onClick={execute}>
-              {executing
-                ? `Executing...check console for details...`
-                : `Execute helloworld.aleo`}
-            </button>
-          </p>
-        </div>
-
-        {/* Advanced Section */}
-        <div className="card">
-          <h2>Advanced Actions</h2>
-          <p>
-            Deployment on Aleo requires certain prerequisites like seeding your
-            wallet with credits and retrieving a fee record. Check README for more
-            details.
-          </p>
-            <button className="px-4 py-2 border-2 border-cyan-300 rounded-full" disabled={deploying} onClick={deploy}>
-              {deploying
-                ? `Deploying...check console for details...`
-                : `Deploy helloworld.aleo`}
-            </button>
-        </div>
       </article>
       <Footer/>
     </>

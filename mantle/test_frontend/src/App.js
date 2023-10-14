@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 // Import ABI Code to interact with smart contract
 import DIS from "./artifacts/DIS.json";
@@ -15,8 +15,7 @@ function App() {
   const [exTotalFund, setExTotalFund] = useState();
   const [totalFund, setTotalFund] = useState();
 
-
-  // Helper Functions
+  //Helper Functions
 
   // Requests access to the user's Meta Mask Account
   // https://metamask.io/
@@ -79,6 +78,10 @@ function App() {
       }
     }
   }
+  
+  useEffect(()={
+    getTotalFunds
+  },[])
 
   // Return
   return (

@@ -1,16 +1,18 @@
 // The 'blockoverflow' program.
 program blockoverflow.aleo {
-
-
     //transition main(public a: u32, b: u32) -> u32 {
     //    let c: u32 = a + b;
     //    return c;
     //}
-
     record Funds {
         owner: address,
         deposit: u64,
-        inssured_amount: u64
+        insured_amount: u64
+    }
+
+    record Pool {
+        owner: address,
+        total_pool: u64,
     }
 
     transition add_funds(bank: address, totalDeposit: u64) -> Funds
@@ -19,9 +21,23 @@ program blockoverflow.aleo {
         let funds: Funds = Funds {
             owner: bank,
             deposit: totalDeposit,
-            inssured_amount: totalDeposit * rate / 1000u64
+            insured_amount: totalDeposit * rate / 1000u64
         };
         return funds;
+    }
+
+    transition resolve(first: Funds, second: Funds) -> Pool {
+        // Ensure the caller is the manager.
+        assert_eq(self.caller, aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p);
+
+        let total_pool: u64 = first.insured_amount + second.insured_amount;
+
+        let pool: Pool = Pool {
+            owner: self.caller,
+            total_pool: total_pool
+        };
+
+        return pool;
     }
 
 

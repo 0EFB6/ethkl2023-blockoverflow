@@ -3,7 +3,11 @@ program blockoverflow.aleo;
 record Funds:
     owner as address.private;
     deposit as u64.private;
-    inssured_amount as u64.private;
+    insured_amount as u64.private;
+
+record Pool:
+    owner as address.private;
+    total_pool as u64.private;
 
 record Token:
     owner as address.private;
@@ -17,10 +21,20 @@ mapping balances:
 function add_funds:
     input r0 as address.private;
     input r1 as u64.private;
+    assert.eq self.signer r0;
     mul r1 3u64 into r2;
     div r2 1000u64 into r3;
     cast r0 r1 r3 into r4 as Funds.record;
     output r4 as Funds.record;
+
+
+function resolve:
+    input r0 as Funds.record;
+    input r1 as Funds.record;
+    assert.eq self.caller aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p;
+    add r0.insured_amount r1.insured_amount into r2;
+    cast self.caller r2 into r3 as Pool.record;
+    output r3 as Pool.record;
 
 
 function issue:

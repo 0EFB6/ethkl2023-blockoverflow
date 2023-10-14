@@ -8,7 +8,7 @@ import KrakenLogo from "./assets/KrakenLogo.png"
 
 export default function Funds({totalFund, setCurrencyCode, setCompanyName, setExTotalFund, callPayPremium}) {
     const digits = "0123456789"
-    const total = totalFund
+    var total = totalFund
     if(!total) total = 19123131
 
     useEffect(() => {

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 // Import ABI Code to interact with smart contract
 import DIS from "./artifacts/DIS.json";
-import "./App.css";
 import { utils, BigNumber } from "ethers" 
 // The contract address
 const greeterAddress = "0x4e25F10b3C81cf474E4361C109dbF7901B3dDBA8";
@@ -78,29 +77,21 @@ function App() {
       }
     }
   }
-  
-  useEffect(()={
-    getTotalFunds
-  },[])
 
   // Return
   return (
-    <div className="App">
+  <div className="App">
       <div className="App-header">
-        {/* DESCRIPTION  */}
-        <div className="description">
-          <h1>DIS.sol</h1>
-          <h3>Full stack dapp using ReactJS and Hardhat</h3>
-        </div>
         {/* BUTTONS - Fetch and Set */}
         <div className="custom-buttons">
           <button onClick={getTotalFunds} style={{ backgroundColor: "green" }}>
-            Fetch DIS Total Fund
+            Fetch Fund
           </button>
           <button onClick={callPayPremium} style={{ backgroundColor: "red" }}>
             Pay Premium
           </button>
         </div>
+
         {/* INPUT TEXT - String  */}
         <input
           onChange={(e) => setCurrencyCode(e.target.value)}
@@ -117,6 +108,7 @@ function App() {
           value={exTotalFund}
           placeholder="Set Total fund"
         />
+
         {/* Current Value stored on Blockchain */}
         <h2 className="greeting">Fund: {totalFund}</h2>
       </div>

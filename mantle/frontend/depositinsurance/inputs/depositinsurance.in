@@ -1,0 +1,7 @@
+// The program input for depositinsurance/src/main.leo
+
+// Inputs for the `add_funds` transition.
+[add_funds]
+bank: address = aleo12h9ncv5cz3kfcfvx8t2f49njthdftrq5mpnlv5vkvgda56t04gxqf8ffh0;
+totalDeposit: u64 = 6969u64;
+currency: u8 = 7u8;

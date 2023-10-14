@@ -1,16 +1,16 @@
 # Overview (Deposit Insurance System (DIS))
 - Need to collect insured deposit from DEX
 - Need to store paid DEX onchain
-- Display money backing the PIDM?
+- Display money backing the PIDM
 - Staking some percentage of funds
 
 ## Coding Ideas
 - use event and detect event with ether.js
 
 ## Features (* = done)
-- pay premium (annually) *
-- check DIS total fund *
-- claim insurance (some validation mechanism will be done on/offchain or by profesional analyst to ensure DEX is valid to claim) *
+- pay premium (annually) 
+- check DIS total fund 
+- claim insurance (some validation mechanism will be done on/offchain or by profesional analyst to ensure DEX is valid to claim)
   - can only be call by owner
 - check insured DEX info
 - set insured DEX info 

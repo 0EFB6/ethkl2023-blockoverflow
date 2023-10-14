@@ -1,0 +1,10 @@
+{
+    "program": "depositinsurance.aleo",
+    "version": "0.0.0",
+    "description": "Deposit Insurance for Web 3",
+    "development": {
+        "private_key": "APrivateKey1zkp6u8ofFKU7WKCnGKzX6RAzD7WQNLFE3EQN1gMKtxCTS3m",
+        "address": "aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p"
+    },
+    "license": "MIT"
+}

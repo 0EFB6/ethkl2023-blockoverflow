@@ -1,0 +1,3 @@
+`leo run deposit "{owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p.private, amount: 100u64.private, _nonce: 7380451712374264007749960775847679662085882452227780458479832564859327070713group.public}" 10u64`
+
+leo execute issue aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p 69u64

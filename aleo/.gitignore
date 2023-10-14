@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build Directory
+aleo/blockoverflow/build/*
+*.prover
+*.verifier

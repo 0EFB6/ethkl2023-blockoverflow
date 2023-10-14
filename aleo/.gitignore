@@ -27,3 +27,4 @@ dist-ssr
 aleo/blockoverflow/build/*
 *.prover
 *.verifier
+*.avm

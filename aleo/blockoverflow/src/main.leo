@@ -29,7 +29,6 @@ program blockoverflow.aleo {
 
 
 
-
 // Below is sample code provided by Aleo (Basic Bank) Sample (For referncing purpose only)
 
 

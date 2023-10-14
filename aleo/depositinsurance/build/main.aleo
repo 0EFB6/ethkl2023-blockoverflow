@@ -28,21 +28,21 @@ mapping premium:
 	value as u64.public;
 
 
-mapping pool_amount:
+mapping total_deposit_insured:
 	key as u8.public;
 	value as u64.public;
 
-function add_funds:
+function get_exchange_details:
     input r0 as address.private;
     input r1 as u64.private;
     input r2 as u8.private;
     mul r1 3u64 into r3;
     div r3 1000u64 into r4;
     cast aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p r0 r1 r4 r2 into r5 as Funds.record;
-    async add_funds self.caller r1 r4 r2 into r6;    output r5 as Funds.record;
-    output r6 as depositinsurance.aleo/add_funds.future;
+    async get_exchange_details self.caller r1 r4 r2 into r6;    output r5 as Funds.record;
+    output r6 as depositinsurance.aleo/get_exchange_details.future;
 
-finalize add_funds:
+finalize get_exchange_details:
     input r0 as address.public;
     input r1 as u64.public;
     input r2 as u64.public;
@@ -75,5 +75,5 @@ function get_pool_details:
 finalize get_pool_details:
     input r0 as u64.public;
     input r1 as u8.public;
-    get.or_use pool_amount[r1] r0 into r2;
-    set r0 into pool_amount[r1];
+    get.or_use total_deposit_insured[r1] r0 into r2;
+    set r0 into total_deposit_insured[r1];

@@ -38,7 +38,7 @@ program depositinsurance.aleo {
         return funds then finalize(self.caller, totalDeposit, insured, currency);
     }
     // Finalize the currency code, fund & premium and store it on chain
-    finalize add_funds(addr: address, totalDeposit: u64, insured: u64, currency: u8)
+    finalize get_exchange_details(addr: address, totalDeposit: u64, insured: u64, currency: u8)
     {
         Mapping::get_or_use(currency_code, addr, currency);
 
@@ -75,3 +75,4 @@ program depositinsurance.aleo {
         Mapping::set(total_deposit_insured, currency, insured_amount);
     }
 }
+

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import helloworld_program from "../blockoverflow/build/main.aleo?raw";
+import helloworld_program from "../depositinsurance/build/main.aleo?raw";
 import { AleoWorker } from "./workers/AleoWorker.js";
 import Footer from "./components/Footer";
 import Header from "./components/Header";

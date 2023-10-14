@@ -2,6 +2,6 @@
 
 // Inputs for the `add_funds` transition.
 [add_funds]
-bank: address = aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p;
+bank: address = aleo12h9ncv5cz3kfcfvx8t2f49njthdftrq5mpnlv5vkvgda56t04gxqf8ffh0;
 totalDeposit: u64 = 6969u64;
 currency: u8 = 7u8;

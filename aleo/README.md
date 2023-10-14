@@ -1,8 +1,8 @@
-# Blockchain Deposit Insurance for Web 3 (Aleo Track)
+# CryptoSafe - Deposit Insurance System for Crypto Exchange (Aleo Track)
 
 ![Aleo Logo](https://aleo.org/social.png)
 
-Deposit Insurance for Web 3 is a groundbreaking project that ensures the safety of funds for both crypto exchanges and users. In an era where crypto investments are on the rise, protecting crypto exchange and users' assets is crucial. This deposit insurance system guarantees that, even in the event of a crypto exchange crash, your funds remain safe secure.
+CryptoSafe is a groundbreaking project that ensures the safety of funds for both crypto exchanges and users. In an era where crypto investments are on the rise, protecting crypto exchange and users' assets is crucial. This deposit insurance system guarantees that, even in the event of a crypto exchange crash, your funds remain safe secure.
 
 ## Table of Contents
 - [Introduction](#blockchain-deposit-insurance-for-web-3-aleo-track)
@@ -25,11 +25,11 @@ In the rapidly evolving world of Web 3 and blockchain technologies, the security
 
 ### Solution
 
-The **Deposit Insurance for Web 3 (Aleo Track)** is a groundbreaking project that addresses the critical issue of protecting both crypto exchanges and users' assets. It offers a unique solution to the problem of safeguarding digital assets in the Web 3 ecosystem. This project introduces a deposit insurance system that guarantees the safety of funds, even in the event of a crypto exchange crash or other unforeseen circumstances.
+**Cryptosafe** is a groundbreaking project that addresses the critical issue of protecting both crypto exchanges and users' assets. It offers a unique solution to the problem of safeguarding digital assets in the Web 3 ecosystem. This project introduces a deposit insurance system that guarantees the safety of funds, even in the event of a crypto exchange crash or other unforeseen circumstances.
 
 ### How it Works
 
-The **Deposit Insurance for Web 3 (Aleo Track)** operates by providing a robust and reliable insurance mechanism for cryptocurrency investments. It works by:
+**Cryptosafe** operates by providing a robust and reliable insurance mechanism for cryptocurrency investments. It works by:
 
 - **Frontend**: The frontend component of the application allows crypto exchanges to access and manage their deposits. Crypto exchanges can interact with the platform to view their insured deposits.
 
@@ -256,7 +256,7 @@ Next, we will be getting the details of the pool with the owner's address, the t
 leo run get_pool_details aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p "{owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p.private, exchange_address: aleo12h9ncv5cz3kfcfvx8t2f49njthdftrq5mpnlv5vkvgda56t04gxqf8ffh0.private, fund: 69000u64.private, premium: 207u64.private, currency_code: 6u8.private, _nonce: 4403650493061247815348129289270424367431427874521413612333525955189094676725group.public}" "{owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p.private, exchange_address: aleo17glkn35dkjhydrwc3e3jk7whaeh6w0pj7uqvm46x8suhcds2dcqs2uukjj.private, fund: 10000u64.private, premium: 30u64.private, currency_code: 6u8.private, _nonce: 7979292738304938876701708147935296134721345558009966023405928542625422690856group.public}" "{owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p.private, exchange_address: aleo1zsx8k893f5ev4xm4vcgmp0njatmnnyd7un04m46y725w2gqk2y9sf8y4s6.private, fund: 8888u64.private, premium: 26u64.private, currency_code: 6u8.private, _nonce: 7455470763340093542915997461287016408750616591094972293558781609150799032548group.public}" 6u8
 ```
 
-You will be able to view the total fund insured with Deposit Insurance For Web 3 and it is the fund we will store and manage it.
+You will be able to view the total fund insured with CryptoSafe and it is the fund we will store and manage it.
 
 **Last but not least,** you may checkout `sample.sh` for the demo script which works on Unix-like OS.
 

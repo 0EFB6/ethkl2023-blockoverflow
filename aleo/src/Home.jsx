@@ -7,7 +7,7 @@ import viteLogo from "./assets/vite.png"
 export default function Home() {
     return(
       <>
-        <section className="p-14 bg-gradient-to-br from-purple-500 to-pink-500 grid grid-cols-[3fr_1fr] gap-4">
+        <section className="py-14 px-[10%] bg-gradient-to-br from-purple-500 to-pink-500 grid grid-cols-[3fr_1fr] gap-4">
           <div className="flex items-center justify-center">
             <div>
             <h1 className="font-bold text-3xl">BlockOverflow.</h1>

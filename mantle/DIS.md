@@ -39,8 +39,9 @@ To get started with the project, follow these steps:
 1. Do Step 1 to 4 of [Ethereum](#ethereum)
 2. Make sure `Metamask` or any preferred wallet extensions are installed
 3. Add `Mantle Testnet` network in Metamask following this [guide](https://www.mantle.xyz/blog/developers/zero-to-hero-getting-started-on-mantle-testnet)
-4. Click on `Deploy and Run Transactions` and select `Injected Provided - Metamask` or equivalent for `environment` then click `deploy`
-5. That's it! You're ready to use the contract.
+4. Visit [Mantle Faucet](https://www.incepthink.com/mantle/faucet) and get some MNT tokens to deploy the contract.
+5. Click on `Deploy and Run Transactions` and select `Injected Provided - Metamask` or equivalent for `environment` then click `deploy`
+6. That's it! You're ready to use the contract.
 
 ## Usage
 

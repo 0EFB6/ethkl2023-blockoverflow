@@ -1,5 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ethers } from "ethers";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Funds from "./Funds";
 // Import ABI Code to interact with smart contract
 import DIS from "./artifacts/DIS.json";
 import { utils, BigNumber } from "ethers" 
@@ -49,8 +54,6 @@ function App() {
         console.log("Error: ", error);
       
       }
-      
-      
     }
   }
 
@@ -78,14 +81,18 @@ function App() {
       }
     }
   }
-  
-  // useEffect(()={
-  //   getTotalFunds
-  // },[])
 
   // Return
   return (
   <div className="App">
+      <Header requestAccount={requestAccount}/>      
+      <article className="min-h-[85vh]">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/funds" element={<Funds setTotalFund={setTotalFund} setCurrencyCode={setCurrencyCode} setCompanyName={setCompanyName} setExTotalFund={setExTotalFund}/>} />
+        </Routes>
+      </article>
+      <Footer/>
       <div className="App-header">
         {/* BUTTONS - Fetch and Set */}
         <div className="custom-buttons">
@@ -113,13 +120,9 @@ function App() {
           value={exTotalFund}
           placeholder="Set Total fund"
         />
-
-        {/* Current Value stored on Blockchain */}
-        <h2 className="greeting">Fund: {totalFund}</h2>
       </div>
     </div>
   );
 }
 
 export default App;
-// 10000000000000000000

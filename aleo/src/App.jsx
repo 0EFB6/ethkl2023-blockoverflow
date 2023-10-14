@@ -1,5 +1,5 @@
 import { useState } from "react";
-import helloworld_program from "../depositinsurance/build/main.aleo?raw";
+import program from "../depositinsurance/build/main.aleo?raw";
 import { AleoWorker } from "./workers/AleoWorker.js";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -22,7 +22,7 @@ function App() {
   async function execute() {
     setExecuting(true);
     const result = await aleoWorker.localProgramExecution(
-      helloworld_program,
+      program,
       "main",
       ["5u32", "5u32"],
     );
@@ -34,7 +34,7 @@ function App() {
   async function deploy() {
     setDeploying(true);
     try {
-      const result = await aleoWorker.deployProgram(helloworld_program);
+      const result = await aleoWorker.deployProgram(program);
       console.log("Transaction:")
       console.log("https://explorer.hamp.app/transaction?id=" + result)
       alert("Transaction ID: " + result);

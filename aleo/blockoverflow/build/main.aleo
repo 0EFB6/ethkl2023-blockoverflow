@@ -2,6 +2,7 @@ program blockoverflow.aleo;
 
 record Funds:
     owner as address.private;
+    exchange_address as address.private;
     deposit as u64.private;
     insured_amount as u64.private;
 
@@ -18,12 +19,19 @@ mapping balances:
 	key as field.public;
 	value as u64.public;
 
+function main:
+    input r0 as u32.public;
+    input r1 as u32.private;
+    add r0 r1 into r2;
+    output r2 as u32.private;
+
+
 function add_funds:
     input r0 as address.private;
     input r1 as u64.private;
     mul r1 3u64 into r2;
     div r2 1000u64 into r3;
-    cast r0 r1 r3 into r4 as Funds.record;
+    cast aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p r0 r1 r3 into r4 as Funds.record;
     output r4 as Funds.record;
 
 

@@ -1,11 +1,13 @@
 // The 'blockoverflow' program.
 program blockoverflow.aleo {
-    //transition main(public a: u32, b: u32) -> u32 {
-    //    let c: u32 = a + b;
-    //    return c;
-    //}
+    transition main(public a: u32, b: u32) -> u32 {
+        let c: u32 = a + b;
+        return c;
+    }
+
     record Funds {
         owner: address,
+        exchange_address: address,
         deposit: u64,
         insured_amount: u64
     }
@@ -19,7 +21,8 @@ program blockoverflow.aleo {
     {
         let rate: u64 = 3u64;
         let funds: Funds = Funds {
-            owner: bank,
+            owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p,
+            exchange_address: bank,
             deposit: totalDeposit,
             insured_amount: totalDeposit * rate / 1000u64
         };

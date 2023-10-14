@@ -1,155 +1,73 @@
-// The 'blockoverflow' program.
-program blockoverflow.aleo {
-    transition main(public a: u32, b: u32) -> u32 {
-        let c: u32 = a + b;
-        return c;
-    }
+// The 'depositinsurance' program.
+program depositinsurance.aleo {
+    mapping currency_code: address => u8;
+    mapping deposit: address => u64;
+    mapping insured_amount: address => u64;
+
+    mapping pool_amount: u8  => u64;
 
     record Funds {
         owner: address,
         exchange_address: address,
         deposit: u64,
-        insured_amount: u64
+        insured_amount: u64,
+        currency_code: u8
     }
 
     record Pool {
         owner: address,
         total_pool: u64,
+        currency_code: u8
     }
 
-    transition add_funds(bank: address, totalDeposit: u64) -> Funds
+
+    transition add_funds(bank: address, totalDeposit: u64, currency: u8) -> Funds
     {
-        let rate: u64 = 3u64;
+        let insured: u64 = totalDeposit * 3u64 / 1000u64;
+
         let funds: Funds = Funds {
             owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p,
             exchange_address: bank,
             deposit: totalDeposit,
-            insured_amount: totalDeposit * rate / 1000u64
+            insured_amount: insured,
+            currency_code: currency
         };
-        return funds;
+        return funds then finalize(self.caller, totalDeposit, insured, currency);
+    }
+    finalize add_funds(addr: address, totalDeposit: u64, insured: u64, currency: u8)
+    {
+        Mapping::get_or_use(currency_code, addr, currency);
+
+        let current_deposit: u64 = Mapping::get_or_use(deposit, addr, 0u64);
+        Mapping::set(deposit, addr ,current_deposit + totalDeposit);
+        let current_insured: u64 = Mapping::get_or_use(insured_amount, addr, 0u64);
+        Mapping::set(insured_amount, addr ,current_insured + insured);
     }
 
-    transition resolve(manager: address, usdt: Funds, dai: Funds) -> Pool {
-        // Ensure the caller is the manager.
-        //assert_eq(manager, aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p);
+    transition get_pool_details(manager: address, exchange_a: Funds, exchange_b: Funds, exchange_c: Funds, currency: u8) -> Pool {
+        
+        // Ensure the caller is the manager & Same Cryptocurrency
+        assert_eq(manager, aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p);
+        assert_eq(exchange_a.currency_code, currency);
+        assert_eq(exchange_b.currency_code, currency);
+        assert_eq(exchange_c.currency_code, currency);
 
-        let total_pool: u64 = usdt.insured_amount + dai.insured_amount;
+        // Calculate total pool for the currenct in Deposit Insurance
+        let total_pool: u64 = exchange_a.insured_amount + exchange_b.insured_amount + exchange_c.insured_amount;
 
         let pool: Pool = Pool {
             owner: self.caller,
-            total_pool: total_pool
+            total_pool: total_pool,
+            currency_code: currency
         };
 
-        return pool;
+        return pool then finalize(total_pool, currency);
     }
-
-
-
-
-
-
-// Below is sample code provided by Aleo (Basic Bank) Sample (For referncing purpose only)
-
-
-
-
-    // A token, issued by a bank.
-    // - 'owner'  : The address of the account that owns the record associated with this token.
-    // - 'amount' : The amount of tokens owned by the account.
-    record Token {
-        owner: address,
-        amount: u64,
+    finalize get_pool_details (pool: u64, currency: u8)
+    {
+        Mapping::get_or_use(pool_amount, currency, pool);
+        Mapping::set(pool_amount, currency, pool);
     }
-
-    // An on-chain mapping, storing the amount of tokens owned by each account
-    // The account is stored as a to preserve user privacy.
-    mapping balances: field => u64;
-
-    // Returns a new Token.
-    // - `owner` : The address of the account to issue the token to.
-    // - `amount`: The amount of tokens to issue.
-    // Requires that the function caller is the bank.
-    // The bank's address is aleo1t0uer3jgtsgmx5tq6x6f9ecu8tr57rzzfnc2dgmcqldceal0ls9qf6st7a.
-    transition issue(owner: address, amount: u64) -> Token {
-        assert_eq(self.caller, aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p);
-        return Token
-        {
-            owner: owner,
-            amount: amount,
-        };
-    }
-
-    // Deposits some amount of money into the bank.
-    // Returns a new Token with the remaining amount of money.
-    // - `token` : A record containing tokens to deposit.
-    // - `amount`: The amount of tokens to deposit.
-    transition deposit(token: Token, amount: u64) -> Token {
-        let difference: u64 = token.amount - amount;
-
-        let remaining: Token = Token {
-            owner: token.owner,
-            amount: difference,
-        };
-
-        // Compute the hash of the token owner.
-        let hash: field = BHP256::hash_to_field(token.owner);
-
-        return remaining then finalize(hash, amount);
-    }
-
-    // Updates on-chain state by the amount of tokens deposited.
-    // - `hash`  : The hash of the token owner.
-    // - `amount`: The amount of tokens that were deposited.
-    finalize deposit(hash: field, amount: u64) {
-        let current_amount: u64 = Mapping::get_or_use(balances, hash, 0u64);
-        Mapping::set(balances, hash, current_amount + amount);
-    }
-
-    // Returns a new Token containing the amount of money withdrawn.
-    // - `recipient`: The address of the account to withdraw the tokens to.
-    // - `amount`   : The amount of tokens to withdraw.
-    // - `rate`     : The compound interest rate.
-    // - `periods`  : The number of periods to compound the interest over.
-    // Requires that the function caller is the bank.
-    transition withdraw(recipient: address, amount: u64, rate: u64, periods: u64) -> Token {
-        assert_eq(self.caller, aleo1t0uer3jgtsgmx5tq6x6f9ecu8tr57rzzfnc2dgmcqldceal0ls9qf6st7a);
-        let hash: field = BHP256::hash_to_field(recipient);
-
-        let total: u64 = calculate_interest(amount, rate, periods);
-
-        let token: Token = Token {
-            owner: recipient,
-            amount: total,
-        };
-
-        return token then finalize(hash, amount);
-    }
-
-    // Updates on-chain state by the amount of tokens withdrawn.
-    // - `hash`  : The hash of the token owner.
-    // - `amount`: The amount of tokens that were withdrawn.
-    finalize withdraw(hash: field, amount: u64) {
-        let current_amount: u64 = Mapping::get_or_use(balances, hash, 0u64);
-        Mapping::set(balances, hash, current_amount - amount);
-    }
-
-    // Returns the total amount of tokens after compounding interest.
-    // - `principal`: The amount of tokens to compound interest over.
-    // - `rate`     : The compound interest rate.
-    // - `periods`  : The number of periods to compound the interest over.
-    function calculate_interest(principal: u64, rate: u64, periods: u64) -> u64 {
-        let amount: u64 = principal;
-
-        for i:u64 in 0u64..100u64 {
-            if i < periods {
-                amount += (amount * rate) / 10000u64;
-            }
-        }
-
-        return amount;
-    }
-
-
 
 
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 // Import ABI Code to interact with smart contract
 import DIS from "./artifacts/DIS.json";
@@ -48,6 +48,10 @@ function App() {
       }
     }
   }
+  
+  useEffect(()={
+    getTotalFunds
+  },[])
 
   // Return
   return (

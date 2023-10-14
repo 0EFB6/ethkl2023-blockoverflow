@@ -9,7 +9,6 @@ contract DepositInsuranceSystem {
     mapping(address => uint256) public exchangeTotalFund;
     mapping(address => uint256) public insuredBalances;
 
-
     event Deposit(address indexed account, uint256 amount);
     event Withdrawal(address indexed account, uint256 amount);
     event InsuranceClaim(address indexed account, uint256 amount);

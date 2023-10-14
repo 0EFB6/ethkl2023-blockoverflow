@@ -9,6 +9,7 @@ const total = 1912391
 
 export default function Funds() {
     const digits = "0123456789"
+    
     useEffect(() => {
         const target = document.querySelector('.roulette');
         if (target) {

@@ -10,13 +10,13 @@ import Funds from "./Funds";
 const aleoWorker = AleoWorker();
 function App() {
   const [count, setCount] = useState(0);
-  const [account, setAccount] = useState(null);
   const [executing, setExecuting] = useState(false);
   const [deploying, setDeploying] = useState(false);
+  const [account, setAccount] = useState(null);
 
   const generateAccount = async () => {
-    const key = await aleoWorker.getPrivateKey();
-    setAccount(await key.to_string());
+      const key = await aleoWorker.getPrivateKey();
+      setAccount(await key.to_string());
   };
 
   async function execute() {
@@ -47,7 +47,7 @@ function App() {
 
   return (
     <>
-      <Header/>      
+      <Header account={account} generateAccount={generateAccount}/>      
       <article className="min-h-[85vh]">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -57,16 +57,6 @@ function App() {
           <button onClick={() => setCount((count) => count + 1)}>
             count is {count}
           </button>
-
-          {/* Generate Account */}
-          <p>
-            <h1 className="font-bold text-2xl">Generate Account</h1>
-            <button className="bg-black border-2 border-cyan-300 rounded-full p-2 hover:border-rose-300" onClick={generateAccount}>
-              {account
-                ? `Account is ${JSON.stringify(account)}`
-                : `Click to generate account`}
-            </button>
-          </p>
 
           {/* Execute Aleo Script */}
           <p>
@@ -87,13 +77,11 @@ function App() {
             wallet with credits and retrieving a fee record. Check README for more
             details.
           </p>
-          <p>
-            <button disabled={deploying} onClick={deploy}>
+            <button className="px-4 py-2 border-2 border-cyan-300 rounded-full" disabled={deploying} onClick={deploy}>
               {deploying
                 ? `Deploying...check console for details...`
                 : `Deploy helloworld.aleo`}
             </button>
-          </p>
         </div>
       </article>
       <Footer/>

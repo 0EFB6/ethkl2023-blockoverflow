@@ -1,4 +1,4 @@
-# Deposit Insurance System (DIS) for Decentralised Exchange (DEX)
+# Deposit Insurance System (DIS) for Crypto Exchange
 
 ## Table of Contents
   - [Project Overview](#project-overview)
@@ -12,7 +12,7 @@
 
 ## Project Overview
 
-This is a project is developed for the ETHKL 2023 hackathon Ethereum and Mantle tracks. It is a Deposit Insurance System (DIS) for Decentralised Exchange (DEX) which aims to reduce the risk of bankruptcy of both exchanges and investors. The DIS provides a mechanism for cryptocurrency exchanges to pay premiums and claim insurance based on a set of rules.
+This is a project is developed for the ETHKL 2023 hackathon Ethereum and Mantle tracks. It is a Deposit Insurance System (DIS) for Crypto Exchange which aims to reduce the risk of bankruptcy of both exchanges and investors. The DIS provides a mechanism for cryptocurrency exchanges to pay premiums and claim insurance based on a set of rules.
 
 ## Features
 

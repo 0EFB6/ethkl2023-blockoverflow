@@ -12,7 +12,7 @@ function App() {
 
   const [currencyCode, setCurrencyCode] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [exTotalFund, setExTotalFund] = useState();
+  const [exTotalFund, setExTotalFund] = useState("");
   const [totalFund, setTotalFund] = useState();
 
   //Helper Functions
@@ -26,7 +26,7 @@ function App() {
 
   async function callPayPremium() {
     if (!exTotalFund || !companyName || !currencyCode) return;
-    // if (exTotalFund) return;
+
     // If MetaMask exists
     if (typeof window.ethereum !== "undefined") {
       await requestAccount();
@@ -37,12 +37,13 @@ function App() {
       const contract = new ethers.Contract(greeterAddress, DIS.abi, signer);
       try {
         // Call contract function
-        const transaction = await contract.payPremium(exTotalFund, companyName, currencyCode, {value: 1});
+        const transaction = await contract.payPremium(exTotalFund, companyName, currencyCode, {value: 2});
+        // value are in wei, 1 ether is 1e18 wei
         console.log(transaction)
         // Clear value after user call the function so user can set again
         setCompanyName("");
         setCurrencyCode("");
-        setExTotalFund();
+        setExTotalFund("");
 
         await transaction.wait();
       } catch (error) {
@@ -79,9 +80,9 @@ function App() {
     }
   }
   
-  useEffect(()={
-    getTotalFunds
-  },[])
+  // useEffect(()={
+  //   getTotalFunds
+  // },[])
 
   // Return
   return (
@@ -125,3 +126,4 @@ function App() {
 }
 
 export default App;
+// 10000000000000000000

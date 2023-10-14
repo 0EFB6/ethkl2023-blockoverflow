@@ -1,9 +1,11 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import aleoLogo from "./assets/aleo.svg";
-import "./App.css";
-import helloworld_program from "../helloworld/build/main.aleo?raw";
+import helloworld_program from "../blockoverflow/build/main.aleo?raw";
 import { AleoWorker } from "./workers/AleoWorker.js";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Funds from "./Funds";
 
 const aleoWorker = AleoWorker();
 function App() {
@@ -45,35 +47,35 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://aleo.org" target="_blank">
-          <img src={aleoLogo} className="logo" alt="Aleo logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Aleo + React</h1>
+      <Header/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/funds" element={<Funds />} />
+      </Routes>
+      <article className="min-h-[85vh] mx-8">
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+
+        {/* Generate Account */}
         <p>
-          <button onClick={generateAccount}>
+          <h1 className="font-bold text-2xl">Generate Account</h1>
+          <button className="bg-black border-2 border-cyan-300 rounded-full p-2 hover:border-rose-300" onClick={generateAccount}>
             {account
               ? `Account is ${JSON.stringify(account)}`
               : `Click to generate account`}
           </button>
         </p>
+
+        {/* Execute Aleo Script */}
         <p>
+          <h1 className="font-bold text-2xl">Execute Aleo Script</h1>
           <button disabled={executing} onClick={execute}>
             {executing
               ? `Executing...check console for details...`
               : `Execute helloworld.aleo`}
           </button>
-        </p>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
 
@@ -93,9 +95,8 @@ function App() {
           </button>
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Aleo and React logos to learn more
-      </p>
+      </article>
+      <Footer/>
     </>
   );
 }

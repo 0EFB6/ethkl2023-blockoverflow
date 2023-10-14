@@ -26,11 +26,11 @@ program blockoverflow.aleo {
         return funds;
     }
 
-    transition resolve(first: Funds, second: Funds) -> Pool {
+    transition resolve(manager: address, usdt: Funds, dai: Funds) -> Pool {
         // Ensure the caller is the manager.
-        assert_eq(self.caller, aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p);
+        //assert_eq(manager, aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p);
 
-        let total_pool: u64 = first.insured_amount + second.insured_amount;
+        let total_pool: u64 = usdt.insured_amount + dai.insured_amount;
 
         let pool: Pool = Pool {
             owner: self.caller,

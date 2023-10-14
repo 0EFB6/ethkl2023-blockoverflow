@@ -21,7 +21,6 @@ mapping balances:
 function add_funds:
     input r0 as address.private;
     input r1 as u64.private;
-    assert.eq self.signer r0;
     mul r1 3u64 into r2;
     div r2 1000u64 into r3;
     cast r0 r1 r3 into r4 as Funds.record;
@@ -29,12 +28,12 @@ function add_funds:
 
 
 function resolve:
-    input r0 as Funds.record;
+    input r0 as address.private;
     input r1 as Funds.record;
-    assert.eq self.caller aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p;
-    add r0.insured_amount r1.insured_amount into r2;
-    cast self.caller r2 into r3 as Pool.record;
-    output r3 as Pool.record;
+    input r2 as Funds.record;
+    add r1.insured_amount r2.insured_amount into r3;
+    cast self.caller r3 into r4 as Pool.record;
+    output r4 as Pool.record;
 
 
 function issue:

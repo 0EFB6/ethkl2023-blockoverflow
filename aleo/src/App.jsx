@@ -54,10 +54,6 @@ function App() {
           <Route path="/funds" element={<Funds />} />
         </Routes>
         <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-
           {/* Execute Aleo Script */}
           <p>
             <h1 className="font-bold text-2xl">Execute Aleo Script</h1>

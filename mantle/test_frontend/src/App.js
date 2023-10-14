@@ -9,72 +9,15 @@ const greeterAddress = "0x4e25F10b3C81cf474E4361C109dbF7901B3dDBA8";
 
 function App() {
   // Property Variables
-
-  const [message, setMessage] = useState("");
-  const [currentGreeting, setCurrentGreeting] = useState("");
   const [totalFund, setTotalFund] = useState(0);
 
-
-  // Helper Functions
+  //Helper Functions
 
   // Requests access to the user's Meta Mask Account
   // https://metamask.io/
   async function requestAccount() {
     await window.ethereum.request({ method: "eth_requestAccounts" });
-  }
-
-  // Fetches the current value store in greeting
-  async function fetchGreeting() {
-    // If MetaMask exists
-    if (typeof window.ethereum !== "undefined") {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const contract = new ethers.Contract(
-        greeterAddress,
-        DIS.abi,
-        provider
-      );
-      try {
-        // Call DIS.greet() and display current greeting in `console`
-        /* 
-          function greet() public view returns (string memory) {
-            return greeting;
-          }
-        */
-        const data = await contract.greet();
-        console.log("data: ", data);
-        setCurrentGreeting(data);
-      } catch (error) {
-        console.log("Error: ", error);
-      }
-    }
-  }
-
-  // Sets the greeting from input text box
-  async function setGreeting() {
-    if (!message) return;
-
-    // If MetaMask exists
-    if (typeof window.ethereum !== "undefined") {
-      await requestAccount();
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-
-      // Create contract with signer
-      /*
-        function setGreeting(string memory _greeting) public {
-          console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-          greeting = _greeting;
-        } 
-      */
-      const contract = new ethers.Contract(greeterAddress, DIS.abi, signer);
-      const transaction = await contract.setGreeting(message);
-
-      setMessage("");
-      await transaction.wait();
-      fetchGreeting();
-    }
-  }
+  }  
 
   async function getTotalFunds() {
     // If MetaMask exists

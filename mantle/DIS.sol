@@ -2,13 +2,16 @@
 pragma solidity ^0.8.0;
 
 contract DepositInsuranceSystem {
-    address public owner; // contract owner (DIS)
-    uint256 public totalFunds; // DIS total fund
-    uint256 public constant MAX_COVERAGE_PERCENTAGE = 25; // 25 percent of totalFunds
-    uint256 public constant PREMIUM_PERCENTAGE = 10; // 10 percent of exchangeTotalFund
+    address private owner; // contract owner (DIS)
+    uint256 private totalFund; // DIS total fund
+    uint256 private constant MAX_COVERAGE_PERCENTAGE = 25; // 25 percent of totalFund
+    uint256 private constant PREMIUM_PERCENTAGE = 10; // 10 percent of exchangetotalFund
     // storing DEX data onchain
-    mapping(address => uint256) public exchangeTotalFund; 
-    mapping(address => uint256) public insuredBalances; 
+    mapping(address => string) private exchangeName;
+    mapping(address => uint256[]) private exchangeTotalFunds;
+    mapping(address => uint256) private exchangePremium;
+    mapping(address => string[]) private exchangeCurrencyCodes;
+    
 
 
     event Deposit(address indexed account, uint256 amount);
@@ -24,29 +27,46 @@ contract DepositInsuranceSystem {
         owner = msg.sender;
     }
 
-    function payPremium(uint256 totalFund) external payable {
-        exchangeTotalFund[msg.sender] = totalFund;
-        uint256 premium = totalFund * PREMIUM_PERCENTAGE / 100;
-        // require(msg.value > 0, "Premium amount must be greater than 0");
+    function payPremium(uint256 _totalFund, string memory companyName, string memory currencyCode) external payable {
+        uint256 premium = _totalFund * PREMIUM_PERCENTAGE / 100;
         require(msg.value >= premium, "Premium amount must be greater than 10% of exchange's fund");
         
-        insuredBalances[msg.sender] += msg.value;
-        totalFunds += msg.value;
+        exchangeTotalFunds[msg.sender].push(_totalFund);
+        exchangeName[msg.sender] = companyName;
+        exchangeCurrencyCodes[msg.sender].push(currencyCode);
+        exchangePremium[msg.sender] += msg.value;
+        totalFund += msg.value;
         emit Deposit(msg.sender, msg.value);
     }
 
-    function claimInsurance() external {
-        require(insuredBalances[msg.sender] > 0, "No insured balance");
-        uint256 coverageLimit = totalFunds * MAX_COVERAGE_PERCENTAGE / 100;
-        uint256 claimAmount = insuredBalances[msg.sender] > coverageLimit ? coverageLimit : insuredBalances[msg.sender];
-        insuredBalances[msg.sender] -= claimAmount;
-        totalFunds -= claimAmount;
-        payable(msg.sender).transfer(claimAmount);
-        emit InsuranceClaim(msg.sender, claimAmount);
+    function claimInsurance(address _exchangeAddress) external onlyOwner{
+        require(exchangePremium[_exchangeAddress] > 0, "Haven't paid premium");
+        uint256 coverageLimit = totalFund * MAX_COVERAGE_PERCENTAGE / 100;
+        uint256 claimAmount = exchangePremium[_exchangeAddress] > coverageLimit ? coverageLimit : exchangePremium[_exchangeAddress];
+        exchangePremium[_exchangeAddress] -= claimAmount;
+        totalFund -= claimAmount;
+        payable(_exchangeAddress).transfer(claimAmount);
+        emit InsuranceClaim(_exchangeAddress, claimAmount);
     }
 
 
     function fundBalance() public view returns (uint256) {
-        return totalFunds;
+        return totalFund;
+    }
+
+    function getExchangeName(address exchangeAddress) public view returns (string memory) {
+        return exchangeName[exchangeAddress];
+    }
+
+    function getexchangeTotalFunds(address exchangeAddress) public view returns (uint256[] memory) {
+        return exchangeTotalFunds[exchangeAddress];
+    }
+
+    function getExchangePremium(address exchangeAddress) public view returns (uint256) {
+        return exchangePremium[exchangeAddress];
+    }
+
+    function getCurrencyCode(address exchangeAddress) public view returns (string[] memory) {
+        return exchangeCurrencyCodes[exchangeAddress];
     }
 }

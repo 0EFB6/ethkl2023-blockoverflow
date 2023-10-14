@@ -6,9 +6,10 @@ import CoinbaseLogo from "./assets/coinbaseLogo.png"
 import KrakenLogo from "./assets/KrakenLogo.png"
 
 
-export default function Funds({setTotalFund, setCurrencyCode, setCompanyName, setExTotalFund, callPayPremium}) {
+export default function Funds({totalFund, setCurrencyCode, setCompanyName, setExTotalFund, callPayPremium}) {
     const digits = "0123456789"
-    const total = 19246845
+    const total = totalFund
+    if(!total) total = 19123131
 
     useEffect(() => {
         const target = document.querySelector('.roulette');

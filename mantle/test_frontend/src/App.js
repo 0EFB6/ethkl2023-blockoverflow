@@ -17,7 +17,7 @@ function App() {
   const [currencyCode, setCurrencyCode] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [exTotalFund, setExTotalFund] = useState("");
-  const [totalFund, setTotalFund] = useState();
+  const [totalFund, setTotalFund] = useState(null);
 
   //Helper Functions
 
@@ -89,7 +89,7 @@ function App() {
       <article className="min-h-[85vh]">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/funds" element={<Funds setTotalFund={setTotalFund} setCurrencyCode={setCurrencyCode} setCompanyName={setCompanyName} setExTotalFund={setExTotalFund}/>} />
+          <Route path="/funds" element={<Funds totalFund={totalFund} setCurrencyCode={setCurrencyCode} setCompanyName={setCompanyName} setExTotalFund={setExTotalFund}/>} />
         </Routes>
       </article>
       <Footer/>

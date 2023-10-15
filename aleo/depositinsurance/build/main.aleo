@@ -36,8 +36,8 @@ function get_exchange_details:
     input r0 as address.private;
     input r1 as u64.private;
     input r2 as u8.private;
-    mul r1 3u64 into r3;
-    div r3 1000u64 into r4;
+    mul r1 10u64 into r3;
+    div r3 100u64 into r4;
     cast aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p r0 r1 r4 r2 into r5 as Funds.record;
     async get_exchange_details self.caller r1 r4 r2 into r6;    output r5 as Funds.record;
     output r6 as depositinsurance.aleo/get_exchange_details.future;

@@ -26,7 +26,7 @@ program depositinsurance.aleo {
 
     // Transition to get the details of the exchange, cryptocurrency etc. to the Deposit Insurance
     transition get_exchange_details(exchange: address, totalDeposit: u64, currency: u8) -> Funds{
-        let insured: u64 = totalDeposit * 3u64 / 1000u64;
+        let insured: u64 = totalDeposit * 10u64 / 100u64;
 
         let funds: Funds = Funds {
             owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p,

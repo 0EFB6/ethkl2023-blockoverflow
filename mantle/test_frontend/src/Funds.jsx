@@ -54,7 +54,7 @@ export default function Funds({exTotalFund, companyName, currencyCode, totalFund
                 <input onChange={(e) => setCompanyName(e.target.value)} value={companyName} placeholder="Company Name" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/> 
                 <input onChange={(e) => setExTotalFund(e.target.value)} value={exTotalFund} placeholder="Amount" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/> 
                 <span className="mx-4 ml-2 mr-8 font-bold text-xl">$USD</span>
-                <button onClick={callPayPremium} className="px-4 py-2 border-2 border-cyan-300 rounded-full hover:border-cyan-500">Add Funds</button>
+                <button onClick={callPayPremium} className="px-4 py-2 border-2 border-cyan-300 rounded-full hover:border-cyan-500">Pay Premium</button>
             </section>
             <section className="p-14 bg-gray-900">
                 <h1 className="font-bold text-3xl m-4">Participating Exchanges</h1>

@@ -1,6 +1,6 @@
 import blockchainLogo from "./assets/blocks.png"
 import reactLogo from "./assets/react.svg";
-import aleoLogo from "./assets/aleo.svg";
+import mantleLogo from "./assets/mantleLogo.png";
 import tailwindLogo from "./assets/tailwind.webp"
 import viteLogo from "./assets/vite.png"
 
@@ -73,8 +73,8 @@ export default function Home() {
             </a>
           </div>
           <div className="flex justify-center">
-            <a href="https://aleo.org/">
-              <img className="h-full max-h-[150px] aspect-square" alt="aleo" src={aleoLogo}/>
+            <a href="https://www.mantle.xyz/">
+              <img className="h-full max-h-[150px] aspect-square" alt="mantle" src={mantleLogo}/>
             </a>
           </div>
           <div className="flex justify-center">

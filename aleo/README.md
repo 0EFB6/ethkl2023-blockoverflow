@@ -124,20 +124,19 @@ leo run get_pool_details <address> <record_exchange1> <record_exchange1> <record
 For instance, to get details for the funds with the address `aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p`, using the provided group configurations, and currency code `6u8`, you would run:
 
 ```bash
-leo run get_pool_details aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p 
+leo run get_pool_details aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p
 "{owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p.private,
 exchange_address: aleo12h9ncv5cz3kfcfvx8t2f49njthdftrq5mpnlv5vkvgda56t04gxqf8ffh0.private,
-fund: 6969u64.private, premium: 20u64.private, currency_code: 6u8.private,
-_nonce: 545656092158043748810204133041801387577521971740798770262951847460909874238group.public}"
+fund: 69000u64.private, premium: 6900u64.private, currency_code: 6u8.private,
+_nonce: 3916169204053756397953964047609467896674325248096542236261703897058293504919group.public}"
 "{owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p.private,
-exchange_address: aleo17glkn35dkjhydrwc3e3jk7whaeh6w0pj7uqvm46x8suhcds2dcqs2uukjj.private,
-fund: 10000u64.private, premium: 30u64.private, currency_code: 6u8.private,
-_nonce: 8089728916668796558923253162033273998867244818288803406199303298931990524264group.public}"
+exchange_address: aleo17glkn35dkjhydrwc3e3jk7whaeh6w0pj7uqvm46x8suhcds2dcqs2uukjj.private, 
+fund: 10000u64.private, premium: 1000u64.private, currency_code: 6u8.private,
+_nonce: 8205598280580267840349480744491524683047813897336639756885163903263549349091group.public}"
 "{owner: aleo1sya4m2dhgnscll8ka932s442d74n2w0vhdwuens8v3w8007gxcfqmppk9p.private,
 exchange_address: aleo1zsx8k893f5ev4xm4vcgmp0njatmnnyd7un04m46y725w2gqk2y9sf8y4s6.private,
-fund: 8888u64.private, premium: 26u64.private, currency_code: 6u8.private,
-_nonce: 2480492228953327343898988472002769215743408054504733805462410572850201988527group.public}"
-6u8
+fund: 8000u64.private, premium: 800u64.private, currency_code: 6u8.private,
+_nonce: 13056099085925649919730763373885359736129542801904442979921845496992022719group.public}" 6u8
 ```
 
 Please ensure you have `Leo` installed and configured properly to run these commands.
@@ -247,7 +246,7 @@ leo run get_exchange_details aleo12h9ncv5cz3kfcfvx8t2f49njthdftrq5mpnlv5vkvgda56
 
 leo run get_exchange_details aleo17glkn35dkjhydrwc3e3jk7whaeh6w0pj7uqvm46x8suhcds2dcqs2uukjj 10000u64 6u8
 
-leo get_exchange_details aleo1zsx8k893f5ev4xm4vcgmp0njatmnnyd7un04m46y725w2gqk2y9sf8y4s6 8888u64 6u8
+leo get_exchange_details aleo1zsx8k893f5ev4xm4vcgmp0njatmnnyd7un04m46y725w2gqk2y9sf8y4s6 8000u64 6u8
 ```
 
 Next, we will be getting the details of the pool with the owner's address, the three exchanges' details, and the currency code. We need to pass in the all the output generated in the previous command and pass it as argument. We will be using the following command:

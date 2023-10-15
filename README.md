@@ -57,7 +57,7 @@ To get started with the project, follow these steps:
 5. Click on `Deploy and Run Transactions` and select `Injected Provided - Metamask` or equivalent for `environment` then click `deploy`
 6. That's it! You're ready to use the contract.
 
-Note: The smart contract link deployed on mantle explorer is [here]().
+Note: The smart contract link deployed on mantle explorer is [here](https://explorer.testnet.mantle.xyz/address/0x4e25F10b3C81cf474E4361C109dbF7901B3dDBA8).
 
 ### Aleo
 Please refer to the [README](https://raw.githubusercontent.com/0EFB6/ethkl2023-blockoverflow/main/aleo/README.md) in the `aleo` folder for more information.

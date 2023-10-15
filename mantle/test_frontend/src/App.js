@@ -43,7 +43,7 @@ function App() {
         // Call contract function
         const transaction = await contract.payPremium(exTotalFund, companyName, currencyCode, {value: 2});
         // value are in wei, 1 ether is 1e18 wei
-        console.log(transaction)
+        // console.log(transaction)
         // Clear value after user call the function so user can set again
         setCompanyName("");
         setCurrencyCode("");
@@ -89,7 +89,7 @@ function App() {
       <article className="min-h-[85vh]">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/funds" element={<Funds totalFund={totalFund} setCurrencyCode={setCurrencyCode} setCompanyName={setCompanyName} setExTotalFund={setExTotalFund}/>} />
+          <Route path="/funds" element={<Funds exTotalFund={exTotalFund} companyName={companyName} currencyCode={currencyCode} totalFund={totalFund} setCurrencyCode={setCurrencyCode} setCompanyName={setCompanyName} setExTotalFund={setExTotalFund} callPayPremium={callPayPremium}/>} />
         </Routes>
       </article>
       <Footer/>

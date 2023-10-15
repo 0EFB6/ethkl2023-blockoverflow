@@ -6,7 +6,7 @@ import CoinbaseLogo from "./assets/coinbaseLogo.png"
 import KrakenLogo from "./assets/KrakenLogo.png"
 
 
-export default function Funds({totalFund, setCurrencyCode, setCompanyName, setExTotalFund, callPayPremium}) {
+export default function Funds({exTotalFund, companyName, currencyCode, totalFund, setCurrencyCode, setCompanyName, setExTotalFund, callPayPremium}) {
     const digits = "0123456789"
     var total = totalFund
     if(!total) total = 19123131
@@ -50,9 +50,9 @@ export default function Funds({totalFund, setCurrencyCode, setCompanyName, setEx
             </section>
             <section className="mx-8 pb-14">
                 <h1 className="font-bold text-3xl">Add Funds</h1>
-                <input onChange={(e) => setCurrencyCode(e.target.value)} placeholder="Set Currency Code" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/>
-                <input onChange={(e) => setCompanyName(e.target.value)} placeholder="Company Name" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/> 
-                <input onChange={(e) => setExTotalFund(e.target.value)} placeholder="Amount" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/> 
+                <input onChange={(e) => setCurrencyCode(e.target.value)} value={currencyCode} placeholder="Set Currency Code" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/>
+                <input onChange={(e) => setCompanyName(e.target.value)} value={companyName} placeholder="Company Name" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/> 
+                <input onChange={(e) => setExTotalFund(e.target.value)} value={exTotalFund} placeholder="Amount" className="rounded-full pl-4 py-1 border-2 my-4 border-cyan-300 text-black bg-gray-100 w-64 mx-4"/> 
                 <span className="mx-4 ml-2 mr-8 font-bold text-xl">$USD</span>
                 <button onClick={callPayPremium} className="px-4 py-2 border-2 border-cyan-300 rounded-full hover:border-cyan-500">Add Funds</button>
             </section>

@@ -5,8 +5,9 @@
   - [Features](#features)
   - [Getting Started](#getting-started)
     - [Backend](#backend)
-      - [Ethereum](#ethereum)
+      - [Ethereum/Remix](#ethereum)
       - [Mantle](#mantle)
+    - [Frontend](#frontend)
   - [Usage](#usage)
   - [Author](#author)
 
@@ -27,21 +28,39 @@ This is a project is developed for the ETHKL 2023 hackathon Ethereum and Mantle 
 
 ### Backend
 
-#### Ethereum
+### Ethereum
 To get started with the project, follow these steps:
 1. Go to [Remix IDE](https://remix.ethereum.org/)
 2. Click on the `File Explorer` on the left side bar
-3. Copy the code from `backend/DIS.sol` in the repo and paste it in a new file in the contract folder that ends with `.sol` extension
+3. Copy the code from [mantle/backend/DIS.sol](https://raw.githubusercontent.com/0EFB6/ethkl2023-blockoverflow/main/mantle/backend/DIS.sol) in the repo and paste it in a new file in the contract folder that ends with `.sol` extension
 4. Select `Solidity Compiler` from the sidebar and choose the new file to compile
 5. Click on `Deploy and Run Transactions` and click `deploy`.
 6. You can now interact with the deployed contract.
-#### Mantle
+
+### Mantle
 1. Do Step 1 to 4 of [Ethereum](#ethereum)
 2. Make sure `Metamask` or any preferred wallet extensions are installed
 3. Add `Mantle Testnet` network in Metamask following this [guide](https://www.mantle.xyz/blog/developers/zero-to-hero-getting-started-on-mantle-testnet)
 4. Visit [Mantle Faucet](https://www.incepthink.com/mantle/faucet) and get some MNT tokens to deploy the contract.
 5. Click on `Deploy and Run Transactions` and select `Injected Provided - Metamask` or equivalent for `environment` then click `deploy`
 6. That's it! You're ready to use the contract.
+
+Note: The smart contract link deployed on mantle explorer is [here](https://explorer.testnet.mantle.xyz/address/0x4e25F10b3C81cf474E4361C109dbF7901B3dDBA8).
+
+### Frontend
+1. Firstly, get into the frontend directory  
+```shell
+  cd frontend
+```
+2. Install all the required dependencies
+```shell
+  npm i
+```
+
+3. Run the following line to load up the website
+```shell
+  npm run start
+```
 
 ## Usage
 

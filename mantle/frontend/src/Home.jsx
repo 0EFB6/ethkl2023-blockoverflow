@@ -1,18 +1,18 @@
 import blockchainLogo from "./assets/blocks.png"
 import reactLogo from "./assets/react.svg";
-import aleoLogo from "./assets/aleo.svg";
+import mantleLogo from "./assets/mantleLogo.png";
 import tailwindLogo from "./assets/tailwind.webp"
 import viteLogo from "./assets/vite.png"
 
 export default function Home() {
     return(
       <>
-        <section className="p-14 bg-gradient-to-br from-purple-500 to-pink-500 grid grid-cols-[3fr_1fr] gap-4">
+        <section className="py-14 px-[10%] bg-gradient-to-br from-purple-500 to-pink-500 grid grid-cols-[3fr_1fr] gap-4">
           <div className="flex items-center justify-center">
             <div>
-            <h1 className="font-bold text-3xl">BlockOverflow.</h1>
+            <h1 className="font-bold text-3xl">CryptoSafe.</h1>
             <p className="text-justify lg:text-xl">
-              At BlockOverflow, we've revolutionized the world of cryptocurrency 
+              At CryptoSafe, we've revolutionized the world of cryptocurrency 
               exchange insurance. Our platform is designed to safeguard your digital
               assets, ensuring that you can trade with confidence on the blockchain. 
               We understand the dynamic and rapidly evolving nature of the crypto market,
@@ -25,7 +25,7 @@ export default function Home() {
           </div>
         </section>
         <div className="bg-gray-900 p-8 pb-16">
-        <h1 className="font-bold text-4xl text-center m-8">Why Choose BlockOverflow as Your Crypto Exchange Insurance:</h1>
+        <h1 className="font-bold text-4xl text-center m-8">Why Choose CryptoSafe as Your Crypto Exchange Insurance:</h1>
         <section className="grid grid-cols-4 gap-8 mx-14">
           <div className="rounded-lg border-2 p-4 border-cyan-300">
             <h1 className="font-bold text-3xl p-2">1.</h1>
@@ -40,7 +40,7 @@ export default function Home() {
             <h1 className="font-bold text-3xl p-2">2.</h1>
             <h1 className="font-semibold text-2xl">Liquidity Support</h1>
             <p className="text-justify">
-            We don't just stop at insurance. BlockOverflow can also provide liquidity 
+            We don't just stop at insurance. CryptoSafe can also provide liquidity 
             to participating exchanges, ensuring that you have the resources you need 
             to meet market demands, no matter how volatile the crypto space becomes.
             </p>
@@ -73,8 +73,8 @@ export default function Home() {
             </a>
           </div>
           <div className="flex justify-center">
-            <a href="https://aleo.org/">
-              <img className="h-full max-h-[150px] aspect-square" alt="aleo" src={aleoLogo}/>
+            <a href="https://www.mantle.xyz/">
+              <img className="h-full max-h-[150px] aspect-square" alt="mantle" src={mantleLogo}/>
             </a>
           </div>
           <div className="flex justify-center">

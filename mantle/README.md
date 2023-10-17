@@ -1,13 +1,17 @@
 # Deposit Insurance System (DIS) for Crypto Exchange
 
 ## Table of Contents
+
+
   - [Project Overview](#project-overview)
   - [Features](#features)
   - [Getting Started](#getting-started)
     - [Backend](#backend)
-      - [Ethereum/Remix](#ethereum)
-      - [Mantle](#mantle)
+    - [Ethereum](#ethereum)
+    - [Mantle](#mantle)
     - [Frontend](#frontend)
+      - [Automatically](#automatically)
+      - [Manually](#manually)
   - [Usage](#usage)
   - [Author](#author)
 
@@ -29,7 +33,9 @@ This is a project is developed for the ETHKL 2023 hackathon Ethereum and Mantle 
 ### Backend
 
 ### Ethereum
+
 To get started with the project, follow these steps:
+
 1. Go to [Remix IDE](https://remix.ethereum.org/)
 2. Click on the `File Explorer` on the left side bar
 3. Copy the code from [mantle/backend/DIS.sol](https://raw.githubusercontent.com/0EFB6/ethkl2023-blockoverflow/main/mantle/backend/DIS.sol) in the repo and paste it in a new file in the contract folder that ends with `.sol` extension
@@ -38,6 +44,7 @@ To get started with the project, follow these steps:
 6. You can now interact with the deployed contract.
 
 ### Mantle
+
 1. Do Step 1 to 4 of [Ethereum](#ethereum)
 2. Make sure `Metamask` or any preferred wallet extensions are installed
 3. Add `Mantle Testnet` network in Metamask following this [guide](https://www.mantle.xyz/blog/developers/zero-to-hero-getting-started-on-mantle-testnet)
@@ -48,16 +55,43 @@ To get started with the project, follow these steps:
 Note: The smart contract link deployed on mantle explorer is [here](https://explorer.testnet.mantle.xyz/address/0x4e25F10b3C81cf474E4361C109dbF7901B3dDBA8).
 
 ### Frontend
-1. Firstly, get into the frontend directory  
+
+#### Automatically
+
+You could run `script.py` or `script.ps1` to automatically see the frontend
+- Run python script from mantle directory
+```shell
+  python script.py
+```
+
+`or`
+
+- Run powershell script with powershell from mantle directory
+```shell
+  .\script.ps1
+```
+- If error such as `The script will not execute on the system` occur. You might need to run powershell as administrator and type
+```shell
+  Get-ExecutionPolicy RemoteSigned
+```
+For more information click [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.3)
+
+#### Manually
+
+1. Firstly, get into the frontend directory
+
 ```shell
   cd frontend
 ```
+
 2. Install all the required dependencies
+
 ```shell
   npm i
 ```
 
 3. Run the following line to load up the website
+
 ```shell
   npm run start
 ```
